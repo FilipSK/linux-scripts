@@ -18,9 +18,9 @@ echo "Acquire::http::Proxy \"http://10.0.0.107:3142\";" | tee /etc/apt/apt.conf.
 #
 # Update base distro
 #
-apt-get update
-apt-get dist-upgrade
-apt-get install -y patch
+apt update -y
+apt dist-upgrade -y 
+apt install -y patch
 
 #
 # Enable bash auto completion 
