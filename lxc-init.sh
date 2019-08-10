@@ -25,7 +25,7 @@ apt install -y patch
 #
 # Enable bash auto completion 
 #
-patch/etc/bash.bashrc <<-EOF
+patch /etc/bash.bashrc <<-EOF
 35,41c35,41
 < #if ! shopt -oq posix; then
 < #  if [ -f /usr/share/bash-completion/bash_completion ]; then
