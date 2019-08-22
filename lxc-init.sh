@@ -60,3 +60,22 @@ EOF
 #
 apt install -y prometheus-node-exporter
 
+#
+# disable logrotate compression (useful with ZFS)
+#
+cat <<EOF > /usr/local/bin/logrotate-nocompress-hook.sh
+#!/bin/bash
+
+# disable logfile compression for better deduplicatability
+for i in /etc/logrotate.d/*
+do
+    sed -i -E 's/(\s+)(delay|)compress/\1#\2compress/' \$i
+done
+EOF
+
+chmod +x /usr/local/bin/logrotate-nocompress-hook.sh
+
+cat <<EOF > /etc/apt/apt.conf.d/99logrotate_compress_apt_hook
+DPkg::Post-Invoke {"/usr/local/bin/logrotate-nocompress-hook.sh";};
+EOF
+
