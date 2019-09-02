@@ -79,3 +79,10 @@ cat <<EOF > /etc/apt/apt.conf.d/99logrotate_compress_apt_hook
 DPkg::Post-Invoke {"/usr/local/bin/logrotate-nocompress-hook.sh";};
 EOF
 
+
+
+#
+# Various tools
+#
+apt install -y peco
+
