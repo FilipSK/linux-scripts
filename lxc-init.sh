@@ -84,5 +84,4 @@ EOF
 #
 # Various tools
 #
-apt install -y peco
-
+apt install -y peco kitty-terminfo
